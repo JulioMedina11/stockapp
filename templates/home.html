@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Stock App</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Stock App</h1>
+        </div>
+        <div class="header-buttons">
+            <a href="login.html" class="logout-button">Cerrar Sesión</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-sidebar">
+                <img src="/static/img/logo.jpeg" alt="Logo" class="sidebar-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="usuario.html" class="nav-button">Usuarios</a></li>
+                    <li><a href="proveedores.html" class="nav-button">Proveedores</a></li>
+                    <li><a href="producto.html" class="nav-button">Productos</a></li>
+                    <li><a href="usuario.html" class="nav-button">Clientes</a></li>
+                    <li><a href="detalle_venta.html" class="nav-button">Ventas</a></li>
+                    <li><a href="inventario.html" class="nav-button">Inventario</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <h2>Resumen General</h2>
+            <div class="cards-container">
+                <div class="card" id="usuarios">
+                    <img src="/static/img/usuario.jpeg" alt="Usuarios" class="icon">
+                    <div class="card-info">
+                        <h3>Usuarios</h3>
+                        <p><span>10</span></p>
+                    </div>
+                </div>
+                <div class="card" id="proveedores">
+                    <img src="/static/img/proveedores.jpeg" alt="Proveedores" class="icon">
+                    <div class="card-info">
+                        <h3>Proveedores</h3>
+                        <p><span>5</span></p>
+                    </div>
+                </div>
+                <div class="card" id="productos">
+                    <img src="/static/img/productos.jpeg" alt="Productos" class="icon">
+                    <div class="card-info">
+                        <h3>Productos</h3>
+                        <p><span>150</span></p>
+                    </div>
+                </div>
+                <div class="card" id="clientes">
+                    <img src="/static/img/clientes.jpeg" alt="Clientes" class="icon">
+                    <div class="card-info">
+                        <h3>Clientes</h3>
+                        <p><span>200</span></p>
+                    </div>
+                </div>
+                <div class="card" id="ventas">
+                    <img src="/static/img/ventas.jpeg" alt="Ventas" class="icon">
+                    <div class="card-info">
+                        <h3>Ventas</h3>
+                        <p><span>$5000</span></p>
+                    </div>
+                </div>
+                <div class="card" id="categorias">
+                    <img src="/static/img/categorias.jpeg" alt="Categorías" class="icon">
+                    <div class="card-info">
+                        <h3>Categorías</h3>
+                        <p><span>8</span></p>
+                    </div>
+                </div>
+                <div class="card" id="inventario">
+                    <img src="/static/img/inventario.jpeg" alt="Inventario" class="icon">
+                    <div class="card-info">
+                        <h3>Inventario</h3>
+                        <p><span>300</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Stock App. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="/templates/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de entrada
+        $(document).ready(function() {
+            $('.container').hide().fadeIn(1000);
+        });
+    </script>
+</body>
+</html>

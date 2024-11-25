@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Stock App</title>
+    <link rel="stylesheet" href="/static/inventario.css"> <!-- Asegúrate de que este CSS esté correctamente vinculado -->
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/usuario.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Stock App</h1>
+        </div>
+        <div class="header-buttons">
+            <a href="login.html" class="logout-button">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Contenedor de la barra lateral -->
+        <div class="sidebar-container">
+            <div class="logo-sidebar">
+                <img src="/static/img/logo.jpeg" alt="Logo" class="sidebar-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-button">Inicio</a></li>
+                    <li><a href="usuario.html" class="nav-button">Usuarios</a></li>
+                    <li><a href="proveedores.html" class="nav-button">Proveedores</a></li>
+                    <li><a href="producto.html" class="nav-button">Productos</a></li>
+                    <li><a href="usuario.html" class="nav-button">Clientes</a></li>
+                    <li><a href="detalle_venta.html" class="nav-button">Ventas</a></li>
+                    <li><a href="inventario.html" class="nav-button">Inventario</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Contenedor principal de la página -->
+        <div class="content">
+            <div class="inventario-container">
+                <h2>Consulta y Actualización de Inventario</h2>
+
+                <!-- Campo de búsqueda de producto -->
+                <div class="search-container">
+                    <label for="product-search">Buscar Producto (por ID o Nombre):</label>
+                    <input type="text" id="product-search" placeholder="Buscar por ID o Nombre">
+                    <button id="search-product" class="action-button">Buscar Producto</button>
+                </div>
+
+                <!-- Resultados de la consulta -->
+                <div id="product-details" style="display:none;">
+                    <h3>Detalles del Producto</h3>
+                    <p><strong>ID Producto:</strong> <span id="product-id"></span></p>
+                    <p><strong>Nombre:</strong> <span id="product-name"></span></p>
+                    <p><strong>Stock Actual:</strong> <span id="product-stock"></span></p>
+                    <p><strong>Precio Actual:</strong> <span id="product-price"></span></p>
+
+                    <!-- Formulario para actualizar stock y precio -->
+                    <h4>Actualizar Stock y Precio</h4>
+                    <label for="new-stock">Nuevo Stock:</label>
+                    <input type="number" id="new-stock" placeholder="Ingrese nueva cantidad de stock">
+                    
+                    <label for="new-price">Nuevo Precio:</label>
+                    <input type="number" id="new-price" placeholder="Ingrese nuevo precio">
+                    
+                    <button id="update-stock-price" class="action-button">Actualizar</button>
+                    <button id="cancel-update" class="action-button">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Stock App. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="/templates/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Animación de entrada
+            $('.container').hide().fadeIn(1000);
+
+            // Manejar el clic en el botón de búsqueda
+            $('#search-product').click(function() {
+                const productSearch = $('#product-search').val().trim();
+
+                if (productSearch === "") {
+                    alert("Por favor, ingrese un ID o nombre de producto.");
+                    return;
+                }
+
+                // Simulación de búsqueda (esto normalmente debería hacer una solicitud AJAX al servidor)
+                const product = searchProduct(productSearch); // Función que simula la búsqueda del producto
+
+                if (product) {
+                    // Mostrar detalles del producto
+                    $('#product-id').text(product.id);
+                    $('#product-name').text(product.name);
+                    $('#product-stock').text(product.stock);
+                    $('#product-price').text(product.price);
+                    $('#product-details').show();
+                } else {
+                    alert("Producto no encontrado.");
+                }
+            });
+
+            // Actualizar stock y precio
+            $('#update-stock-price').click(function() {
+                const newStock = $('#new-stock').val();
+                const newPrice = $('#new-price').val();
+
+                if (newStock === "" || newPrice === "") {
+                    alert("Por favor, ingrese los nuevos valores de stock y precio.");
+                    return;
+                }
+
+                // Simulación de actualización (esto normalmente debería enviar la solicitud al servidor)
+                alert(`Stock actualizado a: ${newStock} y precio actualizado a: $${newPrice}`);
+                
+                // Limpiar los campos y ocultar el formulario
+                $('#new-stock').val('');
+                $('#new-price').val('');
+                $('#product-details').hide();
+            });
+
+            // Cancelar la actualización
+            $('#cancel-update').click(function() {
+                $('#product-details').hide(); // Ocultar el formulario de detalles
+                $('#new-stock').val(''); // Limpiar el campo de nuevo stock
+                $('#new-price').val(''); // Limpiar el campo de nuevo precio
+            });
+
+            // Función de búsqueda simulada (esto debería ser reemplazado por una llamada AJAX al servidor)
+            function searchProduct(searchTerm) {
+                // Lista de productos simulada (esto sería una respuesta de base de datos)
+                const products = [
+                    { id: "001", name: "Producto A", stock: 50, price: 100 },
+                    { id: "002", name: "Producto B", stock: 30, price: 200 },
+                    { id: "003", name: "Producto C", stock: 20, price: 150 }
+                ];
+
+                // Buscar por ID o nombre
+                return products.find(product => product.id === searchTerm || product.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- En una implementación real, deberías reemplazar la función searchProduct y el código que simula la actualización de stock y precio con peticiones AJAX a un backend (servidor) que maneje la búsqueda de productos y la actualización en la base de datos. Aquí te dejo una idea general para cómo podrías estructurar una solicitud AJAX:
+
+javascript
+Copiar código
+// Búsqueda real de productos
+function searchProduct(searchTerm) {
+    $.ajax({
+        url: '/api/productos',  // URL del endpoint que maneja la búsqueda
+        method: 'GET',
+        data: { query: searchTerm },
+        success: function(response) {
+            if (response.product) {
+                // Mostrar detalles en el DOM
+                $('#product-id').text(response.product.id);
+                $('#product-name').text(response.product.name);
+                $('#product-stock').text(response.product.stock);
+                $('#product-price').text(response.product.price);
+                $('#product-details').show();
+            } else {
+                alert("Producto no encontrado.");
+            }
+        },
+        error: function() {
+            alert("Error al buscar el producto.");
+        }
+    });
+} -->

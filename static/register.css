@@ -1,0 +1,120 @@
+/* Cuerpo */
+body {
+    background-color: black;
+    color: #CDA434; /* Texto dorado */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column; /* Permite que el contenido se apile verticalmente */
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+    border: 2px solid #CDA434;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(205, 164, 52, 0.1); /* Fondo dorado claro */
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos dentro de .container se apilen verticalmente */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px; /* Limita el ancho máximo del contenedor */
+}
+
+/* Título de logo */
+.logo h1 {
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilo para los inputs */
+input[type="text"],
+input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #CDA434; /* Borde dorado */
+    border-radius: 5px;
+    width: 100%; /* Asegura que los inputs ocupen el 100% del ancho disponible */
+    max-width: 250px; /* Limita el ancho máximo del input */
+    background-color: black;
+    color: #CDA434; /* Texto dorado */
+}
+
+/* Estilo para el botón */
+button {
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #CDA434; /* Dorado */
+    color: black;
+    cursor: pointer;
+    width: 100%; /* Asegura que el botón ocupe todo el ancho disponible */
+    max-width: 250px; /* Limita el ancho máximo del botón */
+}
+
+button:hover {
+    background-color: rgba(205, 164, 52, 0.8); /* Color dorado más claro al pasar el ratón */
+}
+
+/* Enlace */
+a {
+    color: #CDA434; /* Texto dorado */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Requisitos de la contraseña */
+.password-requirements {
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+/* Consultas de medios para pantallas pequeñas */
+
+/* Para pantallas con un ancho máximo de 768px (tabletas y móviles) */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        width: 90%; /* Hace que el contenedor ocupe un 90% del ancho */
+        max-width: 100%; /* Elimina el límite máximo de ancho */
+    }
+
+    input[type="text"],
+    input[type="password"],
+    button {
+        max-width: 100%; /* Los inputs y botones ocupan el 100% del ancho */
+    }
+}
+
+/* Para pantallas con un ancho máximo de 480px (móviles pequeños) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Reduce el padding alrededor del contenido */
+    }
+
+    .container {
+        padding: 10px;
+        width: 100%; /* El contenedor ocupa todo el ancho disponible */
+    }
+
+    .form {
+        width: 100%; /* Asegura que el formulario ocupe todo el ancho */
+    }
+}

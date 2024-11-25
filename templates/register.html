@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Registro - Stock App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Animación de entrada
+            $('.container').hide().fadeIn(1000);
+
+            // Mostrar/ocultar contraseña
+            $('#togglePassword').on('click', function() {
+                const passwordField = $('#password');
+                const type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+                passwordField.attr('type', type);
+                $(this).text(type === 'password' ? 'Mostrar' : 'Ocultar');
+            });
+
+            // Manejar el envío del formulario
+            $('#registerForm').on('submit', function(event) {
+                event.preventDefault(); // Prevenir el envío tradicional del formulario
+
+                const username = $('input[name="username"]').val();
+                const password = $('#password').val();
+                const errorMessage = $('.error');
+
+                // Limpiar los mensajes de error previos
+                errorMessage.text('');
+
+                // Validar los datos
+                if (username.trim() === '') {
+                    errorMessage.text('El nombre de usuario no puede estar vacío.');
+                    return;
+                }
+
+                if (!validatePassword(password)) {
+                    errorMessage.text('La contraseña no cumple con los requisitos.');
+                    return;
+                }
+
+                // Enviar los datos al backend usando AJAX
+                $.ajax({
+                    url: '/register',  // URL donde se procesará el registro
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ username: username, password: password }),
+                    success: function(response) {
+                        // Si el registro es exitoso, redirigir al login
+                        window.location.href = "/templates/login.html";
+                    },
+                    error: function(xhr) {
+                        errorMessage.text(xhr.responseJSON.error || 'Error al registrarse.');
+                    }
+                });
+            });
+
+            // Función para validar la contraseña
+            function validatePassword(password) {
+                const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                return regex.test(password); // Mínimo 8 caracteres, una mayúscula, una minúscula, y un número
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Registro - Stock App</h1>
+        </div>
+        <form id="registerForm" class="form">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            <button type="button" id="togglePassword">Mostrar</button>
+            <button type="submit">Registrarse</button>
+            <p>¿Ya tienes cuenta? <a href="/templates/login.html" style="color:  #CDA434;">Inicia sesión aquí</a></p>
+            <span class="error" style="color: red;"></span> <!-- Mensaje de error -->
+        </form>
+    </div>
+</body>
+</html>

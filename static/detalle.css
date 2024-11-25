@@ -1,0 +1,335 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo de la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #CDA434; /* Texto dorado */
+}
+
+/* Estilo del encabezado */
+header {
+    background: #000; /* Negro */
+    color: #CDA434; /* Dorado */
+    padding: 20px 30px; /* Más margen */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Barra lateral y navegación */
+.sidebar {
+    width: 250px;
+    background: #000; /* Fondo más oscuro */
+    padding: 30px 20px; /* Más margen */
+    border-right: 3px solid #CDA434; /* Línea dorada a la derecha */
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+    flex-shrink: 0; /* Evitar que se reduzca su tamaño */
+}
+
+.sidebar .logo-sidebar img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0; /* Más espacio entre los elementos */
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #CDA434;
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+    border: 1px solid #0a0a09; /* Borde dorado */
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #B89A2D; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+/* Contenedor principal para el contenido */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden si no caben en la pantalla */
+    margin: 30px; /* Más margen */
+    justify-content: space-between;
+}
+
+/* Contenido principal */
+.content {
+    flex-grow: 1;
+    margin-left: 30px; /* Más margen */
+    background: #000; /* Fondo negro */
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+    flex: 1; /* Asegura que el contenido principal ocupe el espacio restante */
+}
+
+/* Caja para formularios (venta y consulta) */
+.container-forms {
+    display: flex;
+    gap: 30px; /* Mayor espacio entre las cajas */
+    flex-wrap: wrap; /* Permite que las cajas se acomoden cuando haya poco espacio */
+}
+
+.form-box {
+    flex: 1;
+    background-color: rgba(5, 5, 5, 0.1); /* Fondo difuminado */
+    border: 1px solid #CDA434; /* Borde dorado */
+    border-radius: 9px;
+    padding: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto hover para el contenedor */
+.form-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo de los campos de entrada */
+input[type="text"], input[type="number"], input[type="email"] {
+    width: 100%;
+    padding: 12px; /* Un poco más grande */
+    margin: 15px 0; /* Más espacio entre los campos */
+    border: 1px solid #CDA434;
+    border-radius: 5px;
+    background-color: #000;
+    color: #CDA434;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus {
+    outline: none;
+    border-color: #CDA434;
+}
+
+/* Estilo de los botones */
+button.btn {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+    padding: 12px 30px; /* Botón más grande */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    font-size: 16px;
+}
+
+button.btn:hover {
+    background: #CDA434; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+/* Pie de página */
+footer {
+    background-color: #111;
+    padding: 15px 0;
+    text-align: center;
+    color: #CDA434;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline-block;
+    margin: 0 15px; /* Mayor espacio entre los enlaces */
+}
+
+footer nav ul li a {
+    color: #CDA434;
+    text-decoration: none;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+/* Estilo del botón de cerrar sesión */
+.logout-button {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background: #B89A2D; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+/* Diseño para los contenedores de búsqueda y registro */
+.search-container, .add-product-container {
+    background-color: rgba(5, 5, 5, 0.1); /* Fondo dorado claro */
+    border: 1px solid #CDA434; /* Borde dorado */
+    border-radius: 9px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.search-container:hover, .add-product-container:hover {
+    transform: translateY(-5px); /* Efecto de levantamiento */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+/* Estilo de los inputs en ambas cajas */
+input[type="text"], input[type="number"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #CDA434;
+    border-radius: 10px;
+    background-color: #000000; /* Fondo oscuro para inputs */
+    color: #CDA434; /* Texto dorado */
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #CDA434; /* Borde dorado al enfocar */
+}
+
+/* Estilo para los botones de la consulta */
+#consultaVentaForm button {
+    background: #CDA434;
+    color: #000;
+    border-radius: 5px;
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+}
+
+#consultaVentaForm button:hover {
+    background: #B89A2D;
+    color: #fff;
+}
+
+/* Ajustes específicos para la barra lateral y las cajas */
+.sidebar {
+    background-color: #000; /* Fondo negro */
+    border-right: 3px solid #CDA434; /* Borde dorado */
+    padding: 30px 20px;
+    flex-shrink: 0; /* Evitar que se reduzca su tamaño */
+}
+
+/* Estilos de la caja de contenido */
+.content {
+    flex-grow: 1;
+    margin-left: 30px;
+}
+
+/* Estilo de las cajas de contenido */
+.form-box {
+    background-color: rgba(5, 5, 5, 0.1); /* Fondo difuso */
+    border: 1px solid #CDA434; /* Borde dorado */
+    padding: 30px;
+    border-radius: 9px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.form-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    margin-top: 0;
+}
+
+/* Tarjetas de contenido */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: 120px; /* Tamaño reducido */
+    margin: 10px;
+    padding: 10px;
+    background: #000; /* Negro */
+    border: 1px solid #CDA434; /* Borde dorado */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(205, 164, 52, 0.7); /* Sombra dorada más intensa */
+}
+
+.icon {
+    width: 50px; /* Tamaño uniforme para las imágenes */
+    height: 50px; /* Tamaño uniforme para las imágenes */
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #000; /* Negro */
+    color: #CDA434; /* Dorado */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media queries para adaptar el diseño a pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .container-forms {
+        flex-direction: column;
+    }
+
+    .form-box {
+        margin-bottom: 20px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,111 @@
+body {
+    background-color: black;
+    color: #CDA434; /* Texto dorado cambiado a #CDA434 */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    overflow: hidden; /* Evita el desbordamiento */
+}
+
+.container {
+    text-align: center;
+    border: 2px solid #CDA434; /* Borde dorado cambiado a #CDA434 */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%; /* Ajuste para asegurar que el contenido no se desborde */
+    width: 400px; /* Ancho máximo para mantener el diseño ordenado */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho total */
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 100%; /* Cambiar a 100% para que el input ocupe todo el ancho disponible */
+    max-width: 350px; /* Ancho máximo para inputs */
+    border: 1px solid #CDA434; /* Borde dorado cambiado a #CDA434 */
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #CDA434; /* Texto dorado cambiado a #CDA434 */
+    box-sizing: border-box; /* Asegura que padding no afecte el ancho */
+}
+
+button {
+    padding: 10px;
+    width: 100%; /* Cambiar a 100% para que el botón ocupe todo el ancho disponible */
+    max-width: 350px; /* Ancho máximo para el botón */
+    background-color: #CDA434; /* Dorado cambiado a #CDA434 */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #B89A2D; /* Color dorado más oscuro al pasar el ratón */
+}
+
+.password-requirements {
+    font-size: 0.9em;
+    color: #CDA434; /* Color dorado para el texto de requisitos cambiado a #CDA434 */
+}
+
+/* Estilos para el botón de mostrar/ocultar contraseña */
+#togglePassword {
+    background: none;
+    border: none;
+    color: #CDA434; /* Color dorado para el texto cambiado a #CDA434 */
+    cursor: pointer;
+    font-size: 0.9em; /* Tamaño de fuente más pequeño */
+    padding: 0; /* Sin padding para un diseño minimalista */
+    text-decoration: underline; /* Subrayado para indicar que es interactivo */
+}
+
+#togglePassword:hover {
+    color: #B89A2D; /* Color más claro al pasar el mouse */
+}
+
+footer {
+    /* Fondo oscuro */
+    color: #CDA434; /* Texto dorado */
+    text-align: center; /* Centra el texto */
+    padding: 15px; /* Espaciado */
+    width: 100%; /* Asegura que el footer ocupe todo el ancho */
+    position: absolute; /* Fija el footer al fondo */
+    bottom: 0;
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho total */
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal; /* Peso de la fuente normal */
+}
+
+footer .button:hover {
+    color: #B89A2D;  /* Cambia el color del texto a un dorado más oscuro */
+    text-decoration: underline; /* Subraya el texto para indicar que es interactivo */
+}
+
+footer .button:link, footer .button:visited {
+    color: black;  /* Texto negro por defecto */
+    color: #CDA434;  /* Fondo dorado por defecto */
+}
+
+footer .button:hover {
+    color: #CDA434;  /* Cambia el color del texto a un dorado más oscuro */
+    text-decoration: underline; /* Subraya el texto cuando se pasa el ratón */
+}
+
+footer .button:active {
+    color: #B89A2D;  /* Texto dorado más oscuro */
+}

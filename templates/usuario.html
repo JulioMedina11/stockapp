@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Stock App</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/usuario.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Gestión de usuarios</h1>
+        </div>
+        <div class="header-buttons">
+            <a href="login.html" class="logout-button">Cerrar Sesión</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-sidebar">
+                <img src="/static/img/logo.jpeg" alt="Logo" class="sidebar-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-button">Inicio</a></li>
+                    <li><a href="usuario.html" class="nav-button">Usuarios</a></li>
+                    <li><a href="proveedores.html" class="nav-button">Proveedores</a></li>
+                    <li><a href="producto.html" class="nav-button">Productos</a></li>
+                    <li><a href="detalle_venta.html" class="nav-button">Ventas</a></li>
+                    <li><a href="inventario.html" class="nav-button">Inventario</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <!-- Contenedor de búsqueda por ID -->
+            <div class="search-container">
+                <h3>Buscar Usuario por Cédula</h3>
+                <input type="text" id="cedula" placeholder="Ingrese la cédula del usuario">
+                <button id="buscar-usuario" class="btn">Buscar</button>
+                <div id="resultado-busqueda"></div>
+            </div>
+
+            <!-- Contenedor para agregar nuevo usuario -->
+            <div class="add-user-container">
+                <h3>Registrar Nuevo Usuario</h3>
+                <form id="form-registrar-usuario">
+                    <input type="text" id="nombre" placeholder="Nombre" required>
+                    <input type="text" id="cedula-nueva" placeholder="Cédula" required>
+                    <input type="email" id="correo" placeholder="Correo" required>
+                    <button type="submit" class="btn">Registrar Usuario</button>
+                </form>
+                <div id="resultado-registro"></div>
+            </div>
+        </div>
+    </div>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Stock App. Todos los derechos reservados.</p>
+                <nav>
+                    <ul>
+                        <li><a href="/templates/contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Búsqueda de usuario por cédula
+            $('#buscar-usuario').click(function() {
+                const cedula = $('#cedula').val();
+                $.ajax({
+                    url: '/buscar_usuario', // Cambia esto a tu endpoint real
+                    method: 'POST',
+                    data: { cedula: cedula },
+                    success: function(data) {
+                        $('#resultado-busqueda').html(`<p>Nombre: ${data.nombre}, Correo: ${data.correo}</p>`);
+                    },
+                    error: function() {
+                        $('#resultado-busqueda').html('<p>Error al buscar el usuario.</p>');
+                    }
+                });
+            });
+
+            // Registro de nuevo usuario
+            $('#form-registrar-usuario').submit(function(event) {
+                event.preventDefault();
+                const nombre = $('#nombre').val();
+                const cedula = $('#cedula-nueva').val();
+                const correo = $('#correo').val();
+                $.ajax({
+                    url: '/registrar_usuario', // Cambia esto a tu endpoint real
+                    method: 'POST',
+                    data: { nombre: nombre, cedula: cedula, correo: correo },
+                    success: function(data) {
+                        $('#resultado-registro').html('<p>Usuario registrado exitosamente.</p>');
+                    },
+                    error: function() {
+                        $('#resultado-registro').html('<p>Error al registrar el usuario.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

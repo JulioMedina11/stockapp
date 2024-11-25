@@ -1,0 +1,178 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #CDA434; /* Texto dorado */
+    display: flex;
+    flex-direction: column; /* Para que el footer esté al final */
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+}
+
+/* Estilo del encabezado */
+header {
+    background: #000; /* Fondo negro */
+    color: #CDA434; /* Dorado */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.logout-button {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background: #B89A2D; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex: 1;
+    margin: 20px;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    background: #000; /* Negro */
+    color: #CDA434; /* Dorado */
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #CDA434; /* Dorado */
+    padding: 10px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+}
+
+/* Contenido principal */
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #000; /* Fondo negro */
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+    border-radius: 10px;
+}
+
+/* Formulario de Agregar Producto */
+.add-product-container {
+    background: #000; /* Fondo completamente negro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(205, 164, 52, 0.5); /* Sombra dorada */
+    margin-top: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.add-product-container h3 {
+    text-align: center;
+    color: #CDA434; /* Título dorado */
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #CDA434; /* Texto dorado */
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #CDA434; /* Borde dorado */
+    border-radius: 5px;
+    background: #000; /* Fondo negro en los inputs */
+    color: #CDA434; /* Texto dorado en los inputs */
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #B89A2D; /* Borde dorado más oscuro al enfocarse */
+}
+
+/* Botón de agregar producto */
+button {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #B89A2D; /* Un dorado más oscuro */
+    transform: scale(1.05);
+}
+
+/* Estilo del pie de página */
+footer {
+    background: #000; /* Fondo negro */
+    color: #CDA434; /* Texto dorado */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

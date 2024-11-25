@@ -1,0 +1,249 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #CDA434; /* Texto dorado */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Asegura que el body ocupe toda la pantalla */
+}
+
+/* Header */
+header {
+    background: #000;
+    color: #CDA434;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2; /* Asegurarse de que el header esté encima de todo */
+}
+
+header h1 {
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.logout-button {
+    background: #CDA434;
+    color: #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background: #B89A2D;
+    color: #fff;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-grow: 1; /* Para que ocupe el espacio restante de la pantalla */
+    margin: 20px;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+}
+
+/* Contenedor de la barra lateral */
+.sidebar-container {
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro con opacidad para difuminar */
+    padding: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.7); /* Sombra difusa */
+    border-radius: 15px; /* Bordes más suaves */
+    border: 2px solid rgba(205, 164, 52, 0.7); /* Borde dorado semitransparente */
+    flex-shrink: 0; /* Evita que la barra lateral se reduzca en tamaño */
+    flex-grow: 0; /* No crece más allá de su tamaño */
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 100%; /* La barra lateral ocupa todo el contenedor */
+}
+
+.sidebar-logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+.nav-button {
+    color: #CDA434;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #B89A2D;
+}
+
+/* Estilos de contenido */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro con opacidad para integración */
+    overflow-y: auto;
+    border-radius: 15px; /* Bordes redondeados */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineamos los elementos a la izquierda */
+}
+
+/* Detalles del inventario */
+.details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Alineamos los elementos de manera proporcional */
+    gap: 20px;
+    width: 100%; /* Asegura que la sección ocupe todo el ancho disponible */
+}
+
+.detail {
+    padding: 15px;
+    border: 1px solid #CDA434;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo más claro para detalles */
+    flex: 1 1 calc(33% - 20px); /* Flexbox para adaptarse a la pantalla */
+    box-sizing: border-box;
+    min-width: 200px; /* Ancho mínimo para evitar que los cuadros sean demasiado pequeños */
+    margin-bottom: 20px; /* Espacio entre los cuadros */
+}
+
+h3 {
+    margin-top: 0;
+}
+
+/* Botones de acción (detalles y actualizar stock) */
+button.action-button {
+    padding: 10px;
+    background-color: #CDA434;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+button.action-button:hover {
+    background-color: #B89A2D;
+    color: #fff;
+}
+
+/* Estilos del formulario de actualización de stock */
+#update-stock-form {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #CDA434;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo más claro para el formulario */
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#update-stock-form:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Cambiar fondo al hacer hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave al pasar el ratón */
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+    border: 1px solid #CDA434;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #CDA434;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus {
+    border-color: #B89A2D;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo más oscuro cuando se enfoca el input */
+    outline: none;
+}
+
+button#submit-stock-update, button#cancel-stock-update {
+    padding: 10px;
+    background-color: #CDA434;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+button#submit-stock-update:hover, button#cancel-stock-update:hover {
+    background-color: #B89A2D;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #000;
+    text-align: center;
+    color: #CDA434;
+}
+
+/* Eliminación de la línea entre barra de navegación y las cajas */
+nav ul li:last-child {
+    border-bottom: none; /* Eliminar cualquier línea que pueda haber entre la barra de navegación y las cajas */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    /* Ajustar el contenedor principal para pantallas pequeñas */
+    .container {
+        flex-direction: column; /* Disposición en columna para pantallas pequeñas */
+        gap: 10px;
+    }
+
+    /* Ajustar el ancho de la barra lateral */
+    .sidebar-container {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustar los detalles del inventario */
+    .detail {
+        width: 100%; /* Los cuadros de detalle ocuparán todo el ancho en pantallas pequeñas */
+    }
+
+    /* Ajustar el tamaño de los botones */
+    button.action-button, button#submit-stock-update, button#cancel-stock-update {
+        width: 100%;
+        font-size: 1rem; /* Ajustar el tamaño de fuente */
+    }
+
+    /* Formulario de actualización de stock */
+    #update-stock-form {
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+    }
+}

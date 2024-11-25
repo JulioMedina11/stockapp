@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #CDA434; /* Texto dorado */
+}
+
+header {
+    background: #000; /* Negro */
+    color: #CDA434; /* Dorado */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.logout-button {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background: #B89A2D; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+.sidebar {
+    width: 200px;
+}
+
+.content {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+/* Estilos para los contenedores de búsqueda y registro */
+.container-forms {
+    display: flex; /* Disposición horizontal */
+    justify-content: space-between; /* Espaciado entre contenedores */
+    gap: 10px; /* Espacio entre los contenedores */
+}
+
+.search-container, .add-user-container {
+    background-color: rgba(5, 5, 5, 0.1); /* Fondo dorado claro */
+    border: 1px solid #CDA434; /* Borde dorado */
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1; /* Permite que ambos contenedores crezcan igualmente */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.search-container:hover, .add-user-container:hover {
+    transform: translateY(-5px); /* Efecto de levantamiento */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+h3 {
+    margin-top: 0;
+}
+
+/* Estilos para los inputs y botones */
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #CDA434; /* Borde dorado */
+    border-radius: 10px;
+    background-color: #000000; /* Fondo oscuro para inputs */
+    color: #CDA434; /* Texto dorado */
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    outline: none;
+    border-color: #CDA434; /* Borde dorado al enfocar */
+}
+
+.btn {
+    background: #CDA434; /* Dorado */
+    color: #000; /* Negro */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background: #B89A2D; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+#resultado-busqueda, #resultado-registro {
+    margin-top: 10px;
+    color: #CDA434; /* Texto dorado */
+}
+
+/* Estilo para el contenedor que alberga los contenedores de búsqueda y registro */
+.search-container, .add-user-container {
+    flex: 1; /* Permite que ambos contenedores ocupen el mismo espacio */
+    margin: 10px; /* Espaciado entre los contenedores */
+}
+
+/* Estilo para el contenedor principal */
+.content {
+    display: flex; /* Habilita el diseño flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas si es necesario */
+    justify-content: space-between; /* Espaciado entre los contenedores */
+}
+
+/* Estilo para el contenedor que alberga los contenedores de búsqueda y registro */
+.user-management-container {
+    display: flex; /* Habilita el diseño flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas si es necesario */
+    justify-content: space-between; /* Espaciado entre los contenedores */
+    margin-top: 20
+}

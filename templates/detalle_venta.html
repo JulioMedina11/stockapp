@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas - Stock App</title>
+    <link rel="stylesheet" href="/static/detalle.css"> <!-- CSS separado -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Gestión de Ventas</h1>
+        </div>
+        <div class="header-buttons">
+            <a href="/logout" class="logout-button btn">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-sidebar">
+                <img src="/static/img/logo.jpeg" alt="Logo" class="sidebar-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-button btn">Inicio</a></li>
+                    <li><a href="usuario.html" class="nav-button btn">Usuarios</a></li>
+                    <li><a href="proveedores.html" class="nav-button btn">Proveedores</a></li>
+                    <li><a href="producto.html" class="nav-button btn">Productos</a></li>
+                    <li><a href="detalle_venta.html" class="nav-button btn">Ventas</a></li>
+                    <li><a href="inventario.html" class="nav-button btn">Inventario</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <!-- Contenedor para ambos formularios -->
+            <div class="container-forms">
+                <!-- Caja para registrar una venta -->
+                <div class="form-box">
+                    <h3>Registrar Venta</h3>
+                    <form id="ventaForm" method="POST">
+                        <div class="form-group">
+                            <label for="ventaId">ID de Venta:</label>
+                            <input type="text" id="ventaId" name="ventaId" value="V001-{{fecha}}" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productos">Productos (ID de productos separados por coma):</label>
+                            <input type="text" id="productos" name="productos" placeholder="Ejemplo: P001, P002" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cantidades">Cantidades de los productos (separadas por coma):</label>
+                            <input type="text" id="cantidades" name="cantidades" placeholder="Ejemplo: 2, 3" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="totalVenta">Total de la Venta:</label>
+                            <input type="text" id="totalVenta" name="totalVenta" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn">Registrar Venta</button>
+                            <button type="button" id="borrarVenta" class="btn">Borrar Venta</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Caja para consultar ventas ya registradas -->
+                <div class="form-box">
+                    <h3>Consultar Ventas Registradas</h3>
+                    <form id="consultaVentaForm" method="GET">
+                        <div class="form-group">
+                            <label for="ventaIdConsulta">ID de la Venta:</label>
+                            <input type="text" id="ventaIdConsulta" name="ventaIdConsulta" placeholder="Ingrese el ID de la venta" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn">Consultar Venta</button>
+                        </div>
+                    </form>
+
+                    <div id="ventaConsultada" style="display:none;">
+                        <h4>Detalles de la Venta</h4>
+                        <p><strong>Fecha:</strong> <span id="fechaVenta"></span></p>
+                        <p><strong>Productos:</strong> <span id="productosVenta"></span></p>
+                        <p><strong>Total de la Venta:</strong> $<span id="totalVentaConsultada"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Stock App. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="/templates/contacto.html" class="footer-link btn">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Mostrar la animación al cargar la página
+            $('.container').hide().fadeIn(1000);
+
+            // Función para obtener el precio de un producto desde el backend
+            function obtenerPrecioProducto(idProducto, cantidad, index) {
+                $.ajax({
+                    url: '/obtener-precio',  // Endpoint que devolverá el precio
+                    method: 'GET',
+                    data: { idProducto: idProducto },
+                    success: function(data) {
+                        // Suponemos que el servidor responde con un precio
+                        if (data.precio) {
+                            // Calculamos el precio total de este producto
+                            let precioTotal = parseFloat(data.precio) * cantidad;
+                            // Agregamos este precio al total de la venta
+                            actualizarTotal(precioTotal);
+                        } else {
+                            alert('Producto no encontrado.');
+                        }
+                    },
+                    error: function() {
+                        alert('Error al obtener el precio.');
+                    }
+                });
+            }
+
+            // Actualizar el total de la venta
+            function actualizarTotal(precioProducto) {
+                let total = parseFloat($('#totalVenta').val()) || 0;
+                total += precioProducto;
+                $('#totalVenta').val(total.toFixed(2));
+            }
+
+            // Manejar el formulario de venta
+            $('#ventaForm').submit(function(e) {
+                e.preventDefault(); // Evitar que recargue la página
+
+                const productos = $('#productos').val().trim().split(',');
+                const cantidades = $('#cantidades').val().trim().split(',');
+
+                if (productos.length !== cantidades.length) {
+                    alert('El número de productos y cantidades no coincide.');
+                    return;
+                }
+
+                let totalVenta = 0;
+
+                // Iterar por los productos para obtener el precio y calcular el total
+                productos.forEach((productoId, index) => {
+                    let cantidad = parseInt(cantidades[index].trim());
+                    if (!productoId || isNaN(cantidad) || cantidad <= 0) {
+                        alert('Por favor ingrese datos válidos.');
+                        return;
+                    }
+                    // Llamamos a la función para obtener el precio de cada producto
+                    obtenerPrecioProducto(productoId.trim(), cantidad, index);
+                });
+            });
+
+            // Borrar la venta (limpiar formulario)
+            $('#borrarVenta').click(function() {
+                $('#ventaForm')[0].reset();
+                $('#totalVenta').val('');
+            });
+
+            // Función para consultar ventas
+            $('#consultaVentaForm').submit(function(e) {
+                e.preventDefault(); // Evitar que recargue la página
+
+                const ventaId = $('#ventaIdConsulta').val().trim();
+                // Simulamos la consulta de la venta (esto sería una llamada AJAX a un backend)
+                if (ventaId) {
+                    // Aquí simularíamos la respuesta del servidor
+                    $('#ventaConsultada').show();
+                    $('#fechaVenta').text('2024-11-14');
+                    $('#productosVenta').text('P001, P002, P003');
+                    $('#totalVentaConsultada').text('450.00');
+                } else {
+                    alert('Por favor ingrese un ID de venta.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

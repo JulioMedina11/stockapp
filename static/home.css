@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #CDA434; /* Texto dorado cambiado a #CDA434 */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
+}
+
+header {
+    background: #000; /* Negro */
+    color: #CDA434; /* Dorado cambiado a #CDA434 */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0; /* Evita que el header se encoja */
+}
+
+header h1 {
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.logout-button {
+    background: #CDA434; /* Dorado cambiado a #CDA434 */
+    color: #000; /* Negro */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background: #B89A2D; /* Un dorado más oscuro */
+    color: #fff; /* Blanco */
+}
+
+.container {
+    display: flex;
+    flex: 1; /* Ocupa el espacio disponible */
+    margin: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten cuando hay poco espacio */
+}
+
+.sidebar {
+    width: 200px;
+    background: #000; /* Negro */
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada cambiada a #CDA434 */
+    flex-shrink: 0; /* Evita que la barra lateral se encoja */
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #CDA434; /* Dorado cambiado a #CDA434 */
+    padding: 10px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background: #CDA434; /* Dorado cambiado a #CDA434 */
+    color: #000; /* Negro */
+}
+
+.content {
+    flex: 1; /* Ocupa el espacio restante */
+    padding: 20px;
+    background: #000; /* Negro */
+    box-shadow: 0 0 10px rgba(205, 164, 52, 0.5); /* Sombra dorada cambiada a #CDA434 */
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    width: 120px; /* Tamaño reducido */
+    margin: 10px;
+    padding: 10px;
+    background: #000; /* Negro */
+    border: 1px solid #CDA434; /* Borde dorado cambiado a #CDA434 */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(205, 164, 52, 0.5); /* Sombra dorada cambiada a #CDA434 */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(205, 164, 52, 0.7); /* Sombra dorada más intensa cambiada a #CDA434 */
+}
+
+.icon {
+    width: 50px; /* Tamaño uniforme para las imágenes */
+    height: 50px; /* Tamaño uniforme para las imágenes */
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #000; /* Negro */
+    color: #CDA434; /* Dorado cambiado a #CDA434 */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    flex-shrink: 0; /* Evita que el pie de página se encoja */
+}

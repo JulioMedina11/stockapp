@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proveedores</title>
+    <link rel="stylesheet" href="/static/proveedores.css"> <!-- Asegúrate de que tu CSS esté en este archivo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Gestión de Proveedores</h1>
+        </div>
+        <div class="header-buttons">
+            <a href="/logout" class="logout-button">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-sidebar">
+                <img src="/static/img/logo.jpeg" alt="Logo" class="sidebar-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-button">Inicio</a></li>
+                    <li><a href="usuario.html" class="nav-button">Usuarios</a></li>
+                    <li><a href="proveedores.html" class="nav-button">Proveedores</a></li>
+                    <li><a href="producto.html" class="nav-button">Productos</a></li>
+                    <li><a href="detalle_venta.html" class="nav-button">Ventas</a></li>
+                    <li><a href="inventario.html" class="nav-button">Inventario</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <div class="user-management-container">
+                <div class="add-user-container">
+                    <h3>Buscar proveedor</h3>
+                    <form id="registerSupplierForm" action="/register" method="POST">
+                        <label for="registerId">ID:</label>
+                        <input type="text" id="registerId" name="registerId" required>
+
+                        <label for="registerName">Nombre:</label>
+                        <input type="text" id="registerName" name="registerName" required>
+
+                        <label for="registerCategoryId">ID de Categoría:</label>
+                        <input type="text" id="registerCategoryId" name="registerCategoryId" required>
+
+                        <label for="registerPrice">Precio:</label>
+                        <input type="number" id="registerPrice" name="registerPrice" required>
+
+                        <label for="registerQuantity">Cantidad a Pedir:</label>
+                        <input type="number" id="registerQuantity" name="registerQuantity" required>
+
+                        <button type="submit" class="btn">Buscar</button>
+                    </form>
+                </div>
+
+                <div class="search-container">
+                    <h3>Registrar Proveedor</h3>
+                    <form id="searchSupplierForm" action="/search" method="GET">
+                        <label for="searchId">ID:</label>
+                        <input type="text" id="searchId" name="searchId">
+
+                        <label for="searchName">Nombre:</label>
+                        <input type="text" id="searchName" name="searchName">
+
+                        <label for="searchCategoryId">ID de Categoría:</label>
+                        <input type="text" id="searchCategoryId" name="searchCategoryId">
+
+                        <button type="submit" class="btn">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Stock App. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="/templates/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Aquí puedes agregar cualquier script adicional que necesites
+    </script>
+</body>
+</html>
